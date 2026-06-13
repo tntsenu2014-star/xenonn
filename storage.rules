@@ -1,0 +1,18 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /receipts/{fileName} {
+      // Allow anyone to upload a receipt (to support guest orders)
+      // but with strict size and type validation
+      allow read: if request.auth != null;
+      allow write: if request.resource.size < 2 * 1024 * 1024 
+                   && request.resource.contentType.matches('image/.*');
+    }
+    
+    // Default: allow public read, but restrict write to authenticated users
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

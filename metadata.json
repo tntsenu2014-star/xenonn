@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Remix: GAMING R4D Store",
+  "description": "Professional Garena FreeFire specialized store with automated diamond top-ups, account marketplace, and gaming services.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
